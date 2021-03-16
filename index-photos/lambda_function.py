@@ -38,6 +38,7 @@ def lambda_handler(event, context):
             Bucket=bucket,
             Key=key
         )
+        print("done")
         print(response)
         print(response["Metadata"])
         
