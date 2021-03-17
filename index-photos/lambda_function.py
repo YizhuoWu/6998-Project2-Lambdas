@@ -27,25 +27,9 @@ def upload_to_elasticsearch(jsonDocu):
 
 
 def lambda_handler(event, context):
-    print("uploaded photo")
-    print(event)
-    
-    s3_client = boto3.client('s3')
-    for record in event['Records']:
-        bucket = record['s3']['bucket']['name']
-        key = unquote_plus(record['s3']['object']['key'])
-        response = s3_client.head_object(
-            Bucket=bucket,
-            Key=key
-        )
-        print("done")
-        print(response)
-        print(response["Metadata"])
+
         
-    
-    pass
-    
-    '''
+
     s3_client = boto3.client('s3')
     reko_client = boto3.client('rekognition')
     
@@ -53,7 +37,20 @@ def lambda_handler(event, context):
         bucket = record['s3']['bucket']['name']
         key = unquote_plus(record['s3']['object']['key'])
         print("here")
+        
+        headobject = s3_client.head_object(
+            Bucket=bucket,
+            Key=key
+        )
+        
+        print(headobject)
 
+        if headobject["Metadata"]['x-amz-meta-customlabels'] != "":
+            print(headobject["Metadata"]['x-amz-meta-customlabels'])
+            headobject = headobject["Metadata"]['x-amz-meta-customlabels'].split(",")
+        else:
+            headobject = []
+            
         response = reko_client.detect_labels(
             Image={
                 'S3Object': {
@@ -72,10 +69,12 @@ def lambda_handler(event, context):
         
         for item in response["Labels"]:
             labeldict["labels"].append(item["Name"])
+        for item in headobject:
+            labeldict["labels"].append(item.strip())
             
         print(str(labeldict))
         
         upload_to_elasticsearch(labeldict)
-    '''
+    
 
         

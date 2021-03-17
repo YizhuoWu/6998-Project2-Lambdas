@@ -59,6 +59,7 @@ def lambda_handler(event, context):
                 'images':allurl}
                 )
         }
+        
     except:
         return {
             "isBase64Encoded": False,
@@ -68,14 +69,3 @@ def lambda_handler(event, context):
                 'images':[]}
                 )
         }       
-
-    '''
-    searchitem = connectwithlex()
-    
-    allurl = []
-    for item in searchitem:
-        search(item, allurl)
-        
-    print(allurl)
-    '''
-   
