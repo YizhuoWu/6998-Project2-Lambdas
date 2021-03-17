@@ -13,12 +13,6 @@ Resources:
       MemorySize: 128
       Timeout: 3
       Role: 'arn:aws:iam::658514554862:role/service-role/search-photos-role-fdb1iia9'
-      Events:
-        Api1:
-          Type: Api
-          Properties:
-            Path: /search
-            Method: GET
   indexphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
