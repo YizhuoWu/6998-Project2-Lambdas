@@ -19,16 +19,6 @@ Resources:
           Properties:
             Path: /search
             Method: GET
-        Api2:
-          Type: Api
-          Properties:
-            Path: /MyResource
-            Method: ANY
-        Api3:
-          Type: Api
-          Properties:
-            Path: /MyResource
-            Method: ANY
   indexphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
