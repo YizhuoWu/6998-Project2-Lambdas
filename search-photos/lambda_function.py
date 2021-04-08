@@ -51,7 +51,7 @@ def lambda_handler(event, context):
         allurl = []
         p = inflect.engine()
         for item in searchitem:
-            item = p.singular_noun(item)
+            #item = p.singular_noun(item)
             search(item, allurl)
     
         return {
