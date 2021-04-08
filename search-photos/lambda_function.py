@@ -3,6 +3,8 @@ import requests
 import boto3
 import inflect
 
+p = inflect.engine()
+
 def search(item, allurl):
     headers = { "Content-Type": "application/json" }
     ENDPOINT = "https://search-photos-fntfv7yrgxc4zptmna5agsqkqe.us-west-2.es.amazonaws.com"
@@ -49,7 +51,7 @@ def lambda_handler(event, context):
         
         searchitem = connectwithlex(userinput)
         allurl = []
-        #p = inflect.engine()
+ 
         for item in searchitem:
             search(item, allurl)
             #item = p.singular_noun(item)
