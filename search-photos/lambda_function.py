@@ -1,7 +1,7 @@
 import json
 import requests
 import boto3
-import inflect
+#import inflect
 
 def search(item, allurl):
     headers = { "Content-Type": "application/json" }
@@ -49,7 +49,7 @@ def lambda_handler(event, context):
         
         searchitem = connectwithlex(userinput)
         allurl = []
-        p = inflect.engine()
+        #p = inflect.engine()
         for item in searchitem:
             search(item, allurl)
             #item = p.singular_noun(item)
