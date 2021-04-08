@@ -54,6 +54,8 @@ def lambda_handler(event, context):
         allurl = []
  
         for item in searchitem:
+            if p.singular_noun(item) != False:
+                item = p.singular_noun(item)
             search(item, allurl)
             #item = p.singular_noun(item)
             
