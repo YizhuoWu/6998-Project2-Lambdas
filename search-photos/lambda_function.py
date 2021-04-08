@@ -44,6 +44,7 @@ def connectwithlex(userinput):
  
 def lambda_handler(event, context):
     # TODO implement
+    
     p = inflect.engine()
     try:
         print(event["queryStringParameters"]['q'])
