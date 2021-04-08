@@ -1,7 +1,7 @@
 import json
 import requests
 import boto3
-#import inflect
+import inflect
 
 def search(item, allurl):
     headers = { "Content-Type": "application/json" }
