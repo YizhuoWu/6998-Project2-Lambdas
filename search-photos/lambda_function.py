@@ -3,7 +3,7 @@ import requests
 import boto3
 import inflect
 
-p = inflect.engine()
+
 
 def search(item, allurl):
     headers = { "Content-Type": "application/json" }
@@ -44,7 +44,7 @@ def connectwithlex(userinput):
  
 def lambda_handler(event, context):
     # TODO implement
-    
+    p = inflect.engine()
     try:
         print(event["queryStringParameters"]['q'])
         userinput = event["queryStringParameters"]['q']
