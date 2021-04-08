@@ -42,7 +42,7 @@ def lambda_handler(event, context):
             Bucket=bucket,
             Key=key
         )
-        
+        #comment
         print(headobject)
 
         if headobject["Metadata"]['x-amz-meta-customlabels'] != "":
