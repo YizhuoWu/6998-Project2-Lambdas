@@ -51,8 +51,9 @@ def lambda_handler(event, context):
         allurl = []
         p = inflect.engine()
         for item in searchitem:
-            #item = p.singular_noun(item)
             search(item, allurl)
+            #item = p.singular_noun(item)
+            
     
         return {
             "isBase64Encoded": False,
